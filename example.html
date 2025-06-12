@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8" />
+<title>Minecraft Sunucu Durumu (HTML)</title>
+<style>
+  body { font-family: Arial, sans-serif; background: #121212; color: white; text-align: center; padding: 2em; }
+  input, button { padding: 0.5em; font-size: 1em; }
+  #result { margin-top: 1em; }
+  img { margin-top: 1em; }
+</style>
+</head>
+<body>
+<h2>Minecraft Sunucu Durumu</h2>
+<input type="text" id="serverInput" placeholder="mc.hypixel.net" />
+<button onclick="checkServer()">Kontrol Et</button>
+<div id="result"></div>
+
+<script>
+async function checkServer() {
+  const server = document.getElementById('serverInput').value.trim();
+  if (!server) {
+    alert('Sunucu adresi girin!');
+    return;
+  }
+  const url = `https://mcstatus.zewlox.com.tr/api/status/${encodeURIComponent(server)}`;
+
+  try {
+    const res = await fetch(url);
+    if (!res.ok) throw new Error('Sunucu bilgisi alınamadı');
+    const data = await res.json();
+    if (data.success) {
+      document.getElementById('result').innerHTML = `
+        <p>Durum: ${data.data.status.online ? 'Online ✅' : 'Offline ❌'}</p>
+        <p>Oyuncular: ${data.data.status.players.online} / ${data.data.status.players.max}</p>
+        <p>Açıklama: ${data.data.status.description}</p>
+        <img src="https://mcstatus.zewlox.com.tr/api/icon/${encodeURIComponent(server)}" alt="Sunucu İkonu" />
+      `;
+    } else {
+      document.getElementById('result').textContent = 'Sunucu bilgisi alınamadı.';
+    }
+  } catch (e) {
+    document.getElementById('result').textContent = 'Hata: ' + e.message;
+  }
+}
+</script>
+</body>
+</html>
