@@ -4,9 +4,9 @@ Bu proje, bir Minecraft sunucusunun durumunu ve ikonunu sorgulamak için bir API
 
 ## 📦 İçindekiler
 
-- `index.html` + `script.js` – HTML + JavaScript ile sunucu durumu kartı
-- `check.php` – PHP ile sunucu bilgisi sorgulama
-- `main.js` – Node.js (fetch ile) sunucu bilgisi çekme
+- `example.html` – HTML + JavaScript ile sunucu durumu kartı
+- `example.php` – PHP ile sunucu bilgisi sorgulama
+- `nodejs_example.js` – Node.js (fetch ile) sunucu bilgisi çekme
 
 ---
 
