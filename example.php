@@ -17,5 +17,5 @@ echo "<h2>Sunucu: " . htmlspecialchars($data['data']['server']['address']) . "</
 echo "<p>Durum: " . ($data['data']['status']['online'] ? "Online ✅" : "Offline ❌") . "</p>";
 echo "<p>Oyuncular: " . $data['data']['status']['players']['online'] . " / " . $data['data']['status']['players']['max'] . "</p>";
 echo "<p>Açıklama: " . htmlspecialchars($data['data']['status']['description']) . "</p>";
-echo "<img src='https://api.ornekdomain.com/api/icon/" . urlencode($server) . "' alt='Sunucu İkonu' />";
+echo "<img src='https://mcstatus.zewlox.com.tr/api/icon/" . urlencode($server) . "' alt='Sunucu İkonu' />";
 ?>
